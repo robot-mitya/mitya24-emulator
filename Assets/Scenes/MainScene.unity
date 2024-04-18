@@ -202,14 +202,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb10f904c9650ee4e870dcc1afa76311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xFactor: 200
-  yFactor: 200
+  speedFactor: 100
   yawObject: {fileID: 19930849}
-  yawAxis: {x: 0, y: 1, z: 0}
+  yawAxis: 1
+  inverseYaw: 0
+  isYawLimited: 0
+  yawMin: 0
+  yawMax: 0
   pitchObject: {fileID: 909483120}
-  pitchAxis: {x: -1, y: 0, z: 0}
+  pitchAxis: 0
+  inversePitch: 0
+  isPitchLimited: 0
+  pitchMin: 0
+  pitchMax: 0
   rollObject: {fileID: 1153475688}
-  rollAxis: {x: 0, y: 0, z: 1}
+  rollAxis: 2
+  inverseRoll: 0
+  isRollLimited: 0
+  rollMin: 0
+  rollMax: 0
   shiftPressRequire: 0
   ctrlPressRequire: 0
 --- !u!1 &85202380
@@ -1517,14 +1528,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb10f904c9650ee4e870dcc1afa76311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xFactor: 200
-  yFactor: 200
+  speedFactor: 100
   yawObject: {fileID: 2128071279}
-  yawAxis: {x: 0, y: 1, z: 0}
+  yawAxis: 1
+  inverseYaw: 0
+  isYawLimited: 0
+  yawMin: 0
+  yawMax: 0
   pitchObject: {fileID: 1107599568}
-  pitchAxis: {x: 1, y: 0, z: 0}
+  pitchAxis: 0
+  inversePitch: 0
+  isPitchLimited: 0
+  pitchMin: 0
+  pitchMax: 0
   rollObject: {fileID: 0}
-  rollAxis: {x: 0, y: 0, z: 1}
+  rollAxis: 2
+  inverseRoll: 0
+  isRollLimited: 0
+  rollMin: 0
+  rollMax: 0
   shiftPressRequire: 1
   ctrlPressRequire: 1
 --- !u!1 &909483119
@@ -2918,7 +2940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960462565}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2938,14 +2960,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb10f904c9650ee4e870dcc1afa76311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xFactor: 100
-  yFactor: 100
+  speedFactor: 100
   yawObject: {fileID: 1495182166}
-  yawAxis: {x: 0, y: 1, z: 0}
+  yawAxis: 1
+  inverseYaw: 0
+  isYawLimited: 0
+  yawMin: 0
+  yawMax: 0
   pitchObject: {fileID: 628050389}
-  pitchAxis: {x: -1, y: 0, z: 0}
+  pitchAxis: 0
+  inversePitch: 1
+  isPitchLimited: 1
+  pitchMin: 1
+  pitchMax: 90
   rollObject: {fileID: 0}
-  rollAxis: {x: 0, y: 0, z: 1}
+  rollAxis: 2
+  inverseRoll: 0
+  isRollLimited: 0
+  rollMin: 0
+  rollMax: 0
   shiftPressRequire: 1
   ctrlPressRequire: 0
 --- !u!1 &1987946632
