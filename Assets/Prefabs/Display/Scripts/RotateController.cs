@@ -131,14 +131,44 @@ namespace Prefabs.Display.Scripts
             }
         }
 
+        private bool _leftShiftPressed;
+        private bool _rightShiftPressed;
+        private bool _leftCtrlPressed;
+        private bool _rightCtrlPressed;
+        private bool _leftAltPressed;
+        private bool _rightAltPressed;
+      
+        private void OnGUI()
+        {
+            // The only way to get correct shift+ctrl states. Input.GetKey() doesn't work.
+            Event e = Event.current;
+            if (e.isKey)
+            {
+                if (e.keyCode == KeyCode.LeftShift && e.type == EventType.KeyDown) _leftShiftPressed = true;
+                if (e.keyCode == KeyCode.LeftShift && e.type == EventType.KeyUp) _leftShiftPressed = false;
+                if (e.keyCode == KeyCode.RightShift && e.type == EventType.KeyDown) _rightShiftPressed = true;
+                if (e.keyCode == KeyCode.RightShift && e.type == EventType.KeyUp) _rightShiftPressed = false;
+
+                if (e.keyCode == KeyCode.LeftControl && e.type == EventType.KeyDown) _leftCtrlPressed = true;
+                if (e.keyCode == KeyCode.LeftControl && e.type == EventType.KeyUp) _leftCtrlPressed = false;
+                if (e.keyCode == KeyCode.RightControl && e.type == EventType.KeyDown) _rightCtrlPressed = true;
+                if (e.keyCode == KeyCode.RightControl && e.type == EventType.KeyUp) _rightCtrlPressed = false;
+
+                if (e.keyCode == KeyCode.LeftAlt && e.type == EventType.KeyDown) _leftAltPressed = true;
+                if (e.keyCode == KeyCode.LeftAlt && e.type == EventType.KeyUp) _leftAltPressed = false;
+                if (e.keyCode == KeyCode.RightAlt && e.type == EventType.KeyDown) _rightAltPressed = true;
+                if (e.keyCode == KeyCode.RightAlt && e.type == EventType.KeyUp) _rightAltPressed = false;
+            }
+        }
+        
         private void Update()
         {
             if (!Input.GetMouseButton(1)) return; // 1 - right button
-            
-            bool shiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-            bool ctrlPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-            bool altPressed = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 
+            bool shiftPressed = _leftShiftPressed || _rightShiftPressed;
+            bool ctrlPressed = _leftCtrlPressed || _rightCtrlPressed;
+            bool altPressed = _leftAltPressed || _rightAltPressed;
+            
             bool rollFlag = altPressed;
             bool noModifiers = !shiftPressRequire && !ctrlPressRequire && !shiftPressed && !ctrlPressed;
             bool shiftModifier = shiftPressRequire && !ctrlPressRequire && shiftPressed && !ctrlPressed;
