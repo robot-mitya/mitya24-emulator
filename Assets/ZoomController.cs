@@ -12,6 +12,8 @@ public class ZoomController : MonoBehaviour
     public Camera mainCamera;
 
     public float zoomSpeedFactor = 0.5f;
+    [Range(0f, 1f)]
+    public float lerpFactor = 0.1f;
 
     private float _initialFov;
 
@@ -24,7 +26,6 @@ public class ZoomController : MonoBehaviour
             if (!Mathf.Approximately(newValue, fov))
             {
                 fov = newValue;
-                mainCamera.fieldOfView = newValue;
             }
         }
     }
@@ -44,5 +45,9 @@ public class ZoomController : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonUp(2)) FieldOfView = _initialFov;
+        if (!Mathf.Approximately(fov, mainCamera.fieldOfView))
+        {
+            mainCamera.fieldOfView += (fov - mainCamera.fieldOfView) * lerpFactor;
+        }
     }
 }

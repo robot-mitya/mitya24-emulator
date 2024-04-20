@@ -1217,7 +1217,7 @@ Transform:
   - {fileID: 1248897425}
   - {fileID: 604371295}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &647954296
 GameObject:
@@ -2913,7 +2913,7 @@ Transform:
   - {fileID: 998309373}
   - {fileID: 12892582}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1960462565
 GameObject:
@@ -2948,7 +2948,7 @@ Transform:
   m_Children:
   - {fileID: 1495182166}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1960462567
 MonoBehaviour:
@@ -3010,6 +3010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fov: 30
   mainCamera: {fileID: 963194227}
+  zoomSpeedFactor: 0.5
 --- !u!1 &1987946632
 GameObject:
   m_ObjectHideFlags: 0
