@@ -822,6 +822,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -5535055487353535269, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5535055487353535269, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5535055487353535269, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5535055487353535269, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5535055487353535269, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4018613408461722280, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -889,6 +909,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1726550558}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726550559}
   m_SourcePrefab: {fileID: 100100000, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
 --- !u!4 &482753761 stripped
 Transform:
@@ -943,6 +966,11 @@ MonoBehaviour:
   sourceObject: {fileID: 1105764276}
   destinationObject: {fileID: 511352056}
   lerpAlpha: 0.05
+--- !u!4 &512396682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5390699014343874767, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+  m_PrefabInstance: {fileID: 426706734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &516692081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1446,11 @@ Transform:
   m_Father: {fileID: 998309373}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!4 &718213299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5535055487353535269, guid: 3fd9167757fb96bec8f5329b1cccb31c, type: 3}
+  m_PrefabInstance: {fileID: 426706734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &751000761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1616,7 +1649,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2615,6 +2648,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotCamera: {fileID: 1781838028}
   robotCameraParent: {fileID: 286225640}
+--- !u!114 &1726550559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726550554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb10f904c9650ee4e870dcc1afa76311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedFactor: 100
+  yawObject: {fileID: 512396682}
+  yawAxis: 2
+  inverseYaw: 0
+  isYawLimited: 1
+  yawMin: -90
+  yawMax: 90
+  pitchObject: {fileID: 718213299}
+  pitchAxis: 0
+  inversePitch: 0
+  isPitchLimited: 1
+  pitchMin: -30
+  pitchMax: 90
+  rollObject: {fileID: 0}
+  rollAxis: 2
+  inverseRoll: 0
+  isRollLimited: 0
+  rollMin: 0
+  rollMax: 0
+  shiftPressRequire: 0
+  ctrlPressRequire: 1
 --- !u!1 &1739411959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2747,7 +2813,7 @@ Camera:
   m_GameObject: {fileID: 1781838027}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3011,6 +3077,7 @@ MonoBehaviour:
   fov: 30
   mainCamera: {fileID: 963194227}
   zoomSpeedFactor: 0.5
+  lerpFactor: 0.1
 --- !u!1 &1987946632
 GameObject:
   m_ObjectHideFlags: 0
