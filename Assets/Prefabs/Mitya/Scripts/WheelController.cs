@@ -33,19 +33,24 @@ namespace Prefabs.Mitya.Scripts
 
     public class WheelController : MonoBehaviour
     {
-        [Tooltip("Wheel diameter in meters")]
-        public float wheelDiameter = 0.08f;
-    
-        [Tooltip("Wheel models")]
+        [Header("Wheel models")]
         public Transform wheelFL; // front-left
         public Transform wheelFR; // left-right
         public Transform wheelRL; // rear-left
         public Transform wheelRR; // rear-right
 
-        [Tooltip("Wheel speeds in meters per second")]
+        [Header("Geometry")]
+        [Tooltip("Wheel diameter in meters")]
+        public float wheelDiameter = 0.08f;
+    
+        [Header("Wheel Speeds")]
+        [Tooltip("Wheel speed in meters per second")]
         public float speedFL;
+        [Tooltip("Wheel speed in meters per second")]
         public float speedFR;
+        [Tooltip("Wheel speed in meters per second")]
         public float speedRL;
+        [Tooltip("Wheel speed in meters per second")]
         public float speedRR;
     
         private WheelSpeedController _speedControllerFL;
