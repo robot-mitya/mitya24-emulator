@@ -2119,6 +2119,12 @@ MonoBehaviour:
   verticalDefaultAngle: 0
   maxHorizontalAngularSpeed: 360
   maxVerticalAngularSpeed: 360
+  horizontalKp: 10
+  horizontalKi: 0
+  horizontalKd: 0
+  verticalKp: 10
+  verticalKi: 0
+  verticalKd: 0
 --- !u!1 &1107599567
 GameObject:
   m_ObjectHideFlags: 0

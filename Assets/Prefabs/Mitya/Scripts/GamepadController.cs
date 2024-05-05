@@ -59,7 +59,7 @@ namespace Prefabs.Mitya.Scripts
         {
             if (_inputControls.TankActionMap.HeadReset.WasPressedThisFrame())
             {
-                headController.ResetOrientation();
+                headController.Orient(headController.horizontalDefaultAngle, headController.verticalDefaultAngle, 0.5f);
             }
             
             Vector2 headAngularSpeedFactors = CircleToSquare(_inputControls.TankActionMap.HeadRotate.ReadValue<Vector2>());
