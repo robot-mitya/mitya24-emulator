@@ -7,12 +7,14 @@ namespace Prefabs.Mitya.Scripts
     public class GamepadController : MonoBehaviour
     {
         public MoveController moveController;
+        public HeadController headController;
         
         private InputControls _inputControls;
 
         private void Awake()
         {
             Assert.IsNotNull(moveController);
+            Assert.IsNotNull(headController);
             _inputControls = new InputControls();
         }
 
@@ -28,9 +30,15 @@ namespace Prefabs.Mitya.Scripts
 
         private void Update()
         {
-            bool fastRotation = _inputControls.TankActionMap.RotationMode.IsPressed();
-            float triggerSpeedFactor = fastRotation ? 1f : _inputControls.TankActionMap.SpeedFactor.ReadValue<float>();
-            Vector2 moveVector = CircleToSquare(_inputControls.TankActionMap.Move.ReadValue<Vector2>());
+            UpdateBodyMove();
+            UpdateHeadRotate();
+        }
+
+        private void UpdateBodyMove()
+        {
+            bool fastRotation = _inputControls.TankActionMap.BodyRotationMode.IsPressed();
+            float triggerSpeedFactor = fastRotation ? 1f : _inputControls.TankActionMap.BodySpeedFactor.ReadValue<float>();
+            Vector2 moveVector = CircleToSquare(_inputControls.TankActionMap.BodyMove.ReadValue<Vector2>());
             float leftSpeedFactor = fastRotation
                 ? moveVector.x / 2f
                 : moveVector.x < 0f ? 1f + moveVector.x : 1f;
@@ -45,6 +53,20 @@ namespace Prefabs.Mitya.Scripts
             moveController.speedRL = leftSpeed;
             moveController.speedFR = rightSpeed;
             moveController.speedRR = rightSpeed;
+        }
+        
+        private void UpdateHeadRotate()
+        {
+            if (_inputControls.TankActionMap.HeadReset.WasPressedThisFrame())
+            {
+                headController.ResetOrientation();
+            }
+            
+            Vector2 headAngularSpeedFactors = CircleToSquare(_inputControls.TankActionMap.HeadRotate.ReadValue<Vector2>());
+            headAngularSpeedFactors.x = Mathf.Pow(headAngularSpeedFactors.x, 3);
+            headAngularSpeedFactors.y = Mathf.Pow(headAngularSpeedFactors.y, 3);
+            headController.horizontalAngularSpeed = headController.maxHorizontalAngularSpeed * headAngularSpeedFactors.x;
+            headController.verticalAngularSpeed = headController.maxVerticalAngularSpeed * headAngularSpeedFactors.y;
         }
         
         private static Vector2 CircleToSquareInFirstQuadrant(Vector2 value)

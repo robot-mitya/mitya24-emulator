@@ -2032,6 +2032,7 @@ GameObject:
   - component: {fileID: 1105764276}
   - component: {fileID: 1105764277}
   - component: {fileID: 1105764278}
+  - component: {fileID: 1105764279}
   m_Layer: 0
   m_Name: RobotBase
   m_TagString: Untagged
@@ -2097,6 +2098,27 @@ MonoBehaviour:
   speedRL: 0
   speedFR: 0
   speedRR: 0
+--- !u!114 &1105764279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105764275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6140efb0b5a81e389b6d4cafd4e69aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateController: {fileID: 1726550559}
+  horizontalAngle: 0
+  verticalAngle: 0
+  horizontalAngularSpeed: 0
+  verticalAngularSpeed: 0
+  horizontalDefaultAngle: 0
+  verticalDefaultAngle: 0
+  maxHorizontalAngularSpeed: 360
+  maxVerticalAngularSpeed: 360
 --- !u!1 &1107599567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,6 +3393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveController: {fileID: 1105764278}
+  headController: {fileID: 1105764279}
 --- !u!4 &2027260960
 Transform:
   m_ObjectHideFlags: 0

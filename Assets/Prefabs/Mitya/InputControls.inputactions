@@ -6,7 +6,7 @@
             "id": "04f284ad-023a-4aca-944e-da67ded31bf4",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "BodyMove",
                     "type": "Value",
                     "id": "717f4f04-de16-4b3c-bdb9-e24c1549aa05",
                     "expectedControlType": "Stick",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SpeedFactor",
+                    "name": "BodySpeedFactor",
                     "type": "Value",
                     "id": "d1498258-bec6-4c29-8c16-9d23b19882e0",
                     "expectedControlType": "Analog",
@@ -24,9 +24,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RotationMode",
+                    "name": "BodyRotationMode",
                     "type": "Button",
                     "id": "7b13dbae-0212-463a-b7c4-5943b7b87581",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "HeadRotate",
+                    "type": "Value",
+                    "id": "bbaf720e-cb19-4210-9991-9aeb2dca5989",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "HeadReset",
+                    "type": "Button",
+                    "id": "088255f0-095e-4e06-bc52-583f3e97da5a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -41,7 +59,7 @@
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "",
-                    "action": "Move",
+                    "action": "BodyMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +70,7 @@
                     "interactions": "",
                     "processors": "AxisDeadzone",
                     "groups": "",
-                    "action": "SpeedFactor",
+                    "action": "BodySpeedFactor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,7 +81,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotationMode",
+                    "action": "BodyRotationMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5dd677f0-3746-42c0-8cc6-8b67ff13cc58",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "HeadRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "556fc164-483c-4f22-8265-8fa5ef942f7c",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeadReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

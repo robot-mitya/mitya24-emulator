@@ -30,7 +30,7 @@ namespace Prefabs.Mitya.Scripts
             ""id"": ""04f284ad-023a-4aca-944e-da67ded31bf4"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""BodyMove"",
                     ""type"": ""Value"",
                     ""id"": ""717f4f04-de16-4b3c-bdb9-e24c1549aa05"",
                     ""expectedControlType"": ""Stick"",
@@ -39,7 +39,7 @@ namespace Prefabs.Mitya.Scripts
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""SpeedFactor"",
+                    ""name"": ""BodySpeedFactor"",
                     ""type"": ""Value"",
                     ""id"": ""d1498258-bec6-4c29-8c16-9d23b19882e0"",
                     ""expectedControlType"": ""Analog"",
@@ -48,9 +48,27 @@ namespace Prefabs.Mitya.Scripts
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RotationMode"",
+                    ""name"": ""BodyRotationMode"",
                     ""type"": ""Button"",
                     ""id"": ""7b13dbae-0212-463a-b7c4-5943b7b87581"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HeadRotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""bbaf720e-cb19-4210-9991-9aeb2dca5989"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HeadReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""088255f0-095e-4e06-bc52-583f3e97da5a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -65,7 +83,7 @@ namespace Prefabs.Mitya.Scripts
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone"",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""BodyMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -76,7 +94,7 @@ namespace Prefabs.Mitya.Scripts
                     ""interactions"": """",
                     ""processors"": ""AxisDeadzone"",
                     ""groups"": """",
-                    ""action"": ""SpeedFactor"",
+                    ""action"": ""BodySpeedFactor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -87,7 +105,29 @@ namespace Prefabs.Mitya.Scripts
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotationMode"",
+                    ""action"": ""BodyRotationMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dd677f0-3746-42c0-8cc6-8b67ff13cc58"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""HeadRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""556fc164-483c-4f22-8265-8fa5ef942f7c"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeadReset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -98,9 +138,11 @@ namespace Prefabs.Mitya.Scripts
 }");
             // TankActionMap
             m_TankActionMap = asset.FindActionMap("TankActionMap", throwIfNotFound: true);
-            m_TankActionMap_Move = m_TankActionMap.FindAction("Move", throwIfNotFound: true);
-            m_TankActionMap_SpeedFactor = m_TankActionMap.FindAction("SpeedFactor", throwIfNotFound: true);
-            m_TankActionMap_RotationMode = m_TankActionMap.FindAction("RotationMode", throwIfNotFound: true);
+            m_TankActionMap_BodyMove = m_TankActionMap.FindAction("BodyMove", throwIfNotFound: true);
+            m_TankActionMap_BodySpeedFactor = m_TankActionMap.FindAction("BodySpeedFactor", throwIfNotFound: true);
+            m_TankActionMap_BodyRotationMode = m_TankActionMap.FindAction("BodyRotationMode", throwIfNotFound: true);
+            m_TankActionMap_HeadRotate = m_TankActionMap.FindAction("HeadRotate", throwIfNotFound: true);
+            m_TankActionMap_HeadReset = m_TankActionMap.FindAction("HeadReset", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -162,16 +204,20 @@ namespace Prefabs.Mitya.Scripts
         // TankActionMap
         private readonly InputActionMap m_TankActionMap;
         private List<ITankActionMapActions> m_TankActionMapActionsCallbackInterfaces = new List<ITankActionMapActions>();
-        private readonly InputAction m_TankActionMap_Move;
-        private readonly InputAction m_TankActionMap_SpeedFactor;
-        private readonly InputAction m_TankActionMap_RotationMode;
+        private readonly InputAction m_TankActionMap_BodyMove;
+        private readonly InputAction m_TankActionMap_BodySpeedFactor;
+        private readonly InputAction m_TankActionMap_BodyRotationMode;
+        private readonly InputAction m_TankActionMap_HeadRotate;
+        private readonly InputAction m_TankActionMap_HeadReset;
         public struct TankActionMapActions
         {
             private @InputControls m_Wrapper;
             public TankActionMapActions(@InputControls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_TankActionMap_Move;
-            public InputAction @SpeedFactor => m_Wrapper.m_TankActionMap_SpeedFactor;
-            public InputAction @RotationMode => m_Wrapper.m_TankActionMap_RotationMode;
+            public InputAction @BodyMove => m_Wrapper.m_TankActionMap_BodyMove;
+            public InputAction @BodySpeedFactor => m_Wrapper.m_TankActionMap_BodySpeedFactor;
+            public InputAction @BodyRotationMode => m_Wrapper.m_TankActionMap_BodyRotationMode;
+            public InputAction @HeadRotate => m_Wrapper.m_TankActionMap_HeadRotate;
+            public InputAction @HeadReset => m_Wrapper.m_TankActionMap_HeadReset;
             public InputActionMap Get() { return m_Wrapper.m_TankActionMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -181,28 +227,40 @@ namespace Prefabs.Mitya.Scripts
             {
                 if (instance == null || m_Wrapper.m_TankActionMapActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_TankActionMapActionsCallbackInterfaces.Add(instance);
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @SpeedFactor.started += instance.OnSpeedFactor;
-                @SpeedFactor.performed += instance.OnSpeedFactor;
-                @SpeedFactor.canceled += instance.OnSpeedFactor;
-                @RotationMode.started += instance.OnRotationMode;
-                @RotationMode.performed += instance.OnRotationMode;
-                @RotationMode.canceled += instance.OnRotationMode;
+                @BodyMove.started += instance.OnBodyMove;
+                @BodyMove.performed += instance.OnBodyMove;
+                @BodyMove.canceled += instance.OnBodyMove;
+                @BodySpeedFactor.started += instance.OnBodySpeedFactor;
+                @BodySpeedFactor.performed += instance.OnBodySpeedFactor;
+                @BodySpeedFactor.canceled += instance.OnBodySpeedFactor;
+                @BodyRotationMode.started += instance.OnBodyRotationMode;
+                @BodyRotationMode.performed += instance.OnBodyRotationMode;
+                @BodyRotationMode.canceled += instance.OnBodyRotationMode;
+                @HeadRotate.started += instance.OnHeadRotate;
+                @HeadRotate.performed += instance.OnHeadRotate;
+                @HeadRotate.canceled += instance.OnHeadRotate;
+                @HeadReset.started += instance.OnHeadReset;
+                @HeadReset.performed += instance.OnHeadReset;
+                @HeadReset.canceled += instance.OnHeadReset;
             }
 
             private void UnregisterCallbacks(ITankActionMapActions instance)
             {
-                @Move.started -= instance.OnMove;
-                @Move.performed -= instance.OnMove;
-                @Move.canceled -= instance.OnMove;
-                @SpeedFactor.started -= instance.OnSpeedFactor;
-                @SpeedFactor.performed -= instance.OnSpeedFactor;
-                @SpeedFactor.canceled -= instance.OnSpeedFactor;
-                @RotationMode.started -= instance.OnRotationMode;
-                @RotationMode.performed -= instance.OnRotationMode;
-                @RotationMode.canceled -= instance.OnRotationMode;
+                @BodyMove.started -= instance.OnBodyMove;
+                @BodyMove.performed -= instance.OnBodyMove;
+                @BodyMove.canceled -= instance.OnBodyMove;
+                @BodySpeedFactor.started -= instance.OnBodySpeedFactor;
+                @BodySpeedFactor.performed -= instance.OnBodySpeedFactor;
+                @BodySpeedFactor.canceled -= instance.OnBodySpeedFactor;
+                @BodyRotationMode.started -= instance.OnBodyRotationMode;
+                @BodyRotationMode.performed -= instance.OnBodyRotationMode;
+                @BodyRotationMode.canceled -= instance.OnBodyRotationMode;
+                @HeadRotate.started -= instance.OnHeadRotate;
+                @HeadRotate.performed -= instance.OnHeadRotate;
+                @HeadRotate.canceled -= instance.OnHeadRotate;
+                @HeadReset.started -= instance.OnHeadReset;
+                @HeadReset.performed -= instance.OnHeadReset;
+                @HeadReset.canceled -= instance.OnHeadReset;
             }
 
             public void RemoveCallbacks(ITankActionMapActions instance)
@@ -222,9 +280,11 @@ namespace Prefabs.Mitya.Scripts
         public TankActionMapActions @TankActionMap => new TankActionMapActions(this);
         public interface ITankActionMapActions
         {
-            void OnMove(InputAction.CallbackContext context);
-            void OnSpeedFactor(InputAction.CallbackContext context);
-            void OnRotationMode(InputAction.CallbackContext context);
+            void OnBodyMove(InputAction.CallbackContext context);
+            void OnBodySpeedFactor(InputAction.CallbackContext context);
+            void OnBodyRotationMode(InputAction.CallbackContext context);
+            void OnHeadRotate(InputAction.CallbackContext context);
+            void OnHeadReset(InputAction.CallbackContext context);
         }
     }
 }
