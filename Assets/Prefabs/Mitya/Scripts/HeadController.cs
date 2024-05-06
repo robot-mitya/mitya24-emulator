@@ -32,6 +32,9 @@ namespace Prefabs.Mitya.Scripts
         private float _horizontalAngularSpeed;
         private float _verticalAngularSpeed;
 
+        public float RealHorizontalAngularSpeed => _horizontalAngularSpeed;
+        public float RealVerticalAngularSpeed => _verticalAngularSpeed;
+
         private Pid _horizontalPid;
         private Pid _verticalPid;
 
